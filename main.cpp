@@ -47,7 +47,25 @@ void SearchInTheToDoList(string& TheName) {
     if (c == 0)
         cout << "No such to-do list was found" << endl;
 }
-
+void case_search(Date b) {
+    bool t = false;
+    int year1;
+    cin >> year1;
+    int day1;
+    cin >> day1;
+    int mounth1;
+    cin >> mounth1;
+    if (year1 == b.year || day1 == b.day || mounth1 == b.mounth) {
+        cout << "Year" << year1 << endl;
+        cout << "Day" << day1 << endl;
+        cout << "Mounth" << mounth1 << endl;
+        t = true;
+    }
+    else {
+        cout << "Date foundn't!!!!!!" << endl;
+        t = false;
+    }
+}
 int main(){
     cout << "Enter the name of the to-do list: ";
     string popa;
