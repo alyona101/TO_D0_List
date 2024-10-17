@@ -48,6 +48,17 @@ void SearchInTheToDoList(string& TheName) {
         cout << "No such to-do list was found" << endl;
 }
 
+void AddingAcase(Spisok& name) {
+    cout << "Enter title name:";
+    cin >> name.title;
+    cout << "Enter title description:";
+    cin >> name.description;
+    cout << "Enter a description of the title:";
+    cin >> name.priority;
+    cout << " ";
+    to_do_list.push_back(name);
+}
+
 int main(){
     cout << "Enter the name of the to-do list: ";
     string popa;
