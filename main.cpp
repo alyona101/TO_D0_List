@@ -48,6 +48,22 @@ void SearchInTheToDoList(string& TheName) {
         cout << "No such to-do list was found" << endl;
 }
 
+
+void searchdesc(string descriptionn) {
+    int hmf = 0;
+    cout << "Найденые дела: " << endl;
+    cout << endl;
+    for (int i = 0; i < to_do_list.size(); i++) {
+        if (descriptionn == to_do_list[i].description) {
+            print_Spisok(to_do_list[i]);
+            hmf++;
+        }
+    }
+    if (hmf == 0) {
+        cout << "Не найдено дел с таким описанием" << endl;
+    }
+}
+
 void AddingAcase(Spisok& name) {
     cout << "Enter title name:";
     cin >> name.title;
