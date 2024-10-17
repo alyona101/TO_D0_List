@@ -106,8 +106,7 @@ void searchInSpisok(Date when) {
     while (c != 7) {
         for (int i = 0; i < to_do_list.size(); i++) {
             if (to_do_list[i].NewSate.day == when.day && to_do_list[i].NewSate.month == when.month && to_do_list[i].NewSate.year == when.year) {
-                //print_Spisok(to_do_list[i]);
-                cout << to_do_list[i].title << endl;
+                print_Spisok(to_do_list[i]);
             }
         }
         if (strftime(ch, sizeof(ch), "%y %m %d", localtime(&next))) {
