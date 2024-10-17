@@ -161,6 +161,50 @@ void sortByMonth(Date when) {
     }
 }
 
+void changeNote(Spisok& newNote) {
+    string request, newStr;
+    cout << "Enter what to change(title, description, priority, date, time)" << endl;
+    cin >> request;
+    if (request == "title") {
+        cout << "Enter new title:" << endl;
+        cin >> newStr;
+        newNote.title = newStr;
+    }
+    else if (request == "description:") {
+        cout << "Enter new description" << endl;
+        cin >> newStr;
+        newNote.description = newStr;
+    }
+    else if (request == "priority") {
+        cout << "Enter new priority:" << endl;
+        cin >> newStr;
+        newNote.priority = newStr;
+    }
+    else if (request == "date") {
+        cout << "Enter new date(at first day, when month and year):" << endl;
+        int day, month, year;
+        cin >> day;
+        cin >> month;
+        cin >> year;
+        newNote.NewDate.day = day;
+        newNote.NewDate.month = month;
+        newNote.NewDate.year = year;
+    }
+    else if (request == "time") {
+        cout << "Enter new time(at first seconds, when minutes and hours)" << endl;
+        int seconds, minutes, hours;
+        cin >> seconds;
+        cin >> minutes;
+        cin >> hours;
+        newNote.NewTime.second = seconds;
+        newNote.NewTime.minute = minutes;
+        newNote.NewTime.hour = hours;
+    }
+    else {
+        cout << "File did not open(";
+    }
+}
+
 int main(){
     cout << "Enter the name of the to-do list: ";
     string popa;
