@@ -93,6 +93,74 @@ void AddingAcase(Spisok& name) {
     to_do_list.push_back(name);
 }
 
+void searchInSpisok(Date when) {
+    int c = 0;
+    string buf = "";
+    tm date{};
+    date.tm_mday = when.day;
+    date.tm_mon = when.month - 1;
+    date.tm_year = when.year - 1900;
+    time_t timeDate = mktime(&date);
+    time_t next = timeDate + 86400;
+    char ch[100];
+    while (c != 7) {
+        for (int i = 0; i < to_do_list.size(); i++) {
+            if (to_do_list[i].NewSate.day == when.day && to_do_list[i].NewSate.month == when.month && to_do_list[i].NewSate.year == when.year) {
+                //print_Spisok(to_do_list[i]);
+                cout << to_do_list[i].title << endl;
+            }
+        }
+        if (strftime(ch, sizeof(ch), "%y %m %d", localtime(&next))) {
+            buf += ch[0];
+            buf += ch[1];
+            when.year = stoi("20" + buf);
+            buf = "";
+            buf += ch[3];
+            buf += ch[4];
+            when.month = stoi(buf);
+            buf = "";
+            buf += ch[6];
+            buf += ch[7];
+            when.day = stoi(buf);
+            buf = "";
+        }
+        next += 86400;
+        c++;
+    }
+}
+
+void sortByMonth(Date when) {
+    vector <Spisok> to_do_listBuf;
+    bool flag = 0;
+    while (flag == 0) {
+        for (int i = 1; i < to_do_list.size(); i++) {
+            if (to_do_list[i].NewSate.month == when.month && to_do_list[i].NewSate.year == when.year && to_do_list[i].NewSate.day < to_do_list[i - 1].NewSate.day) {
+                for (int j = 0; j < to_do_list.size(); j++) {
+                    if (j < i - 1) {
+                        to_do_listBuf.push_back(to_do_list[j]);
+                    }
+                    else if (j == i - 1) {
+                        to_do_listBuf.push_back(to_do_list[i]);
+                        to_do_listBuf.push_back(to_do_list[j]);
+                        j++;
+                    }
+                    else if (j > i - 1) {
+                        to_do_listBuf.push_back(to_do_list[j]);
+                    }
+                }
+                flag = 1;
+                to_do_list.clear();
+                to_do_list = to_do_listBuf;
+                to_do_listBuf.clear();
+            }
+        }
+        if (flag == 1)
+            flag = 0;
+        else
+            flag = 1;
+    }
+}
+
 int main(){
     cout << "Enter the name of the to-do list: ";
     string popa;
