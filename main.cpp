@@ -94,6 +94,12 @@ void AddingAcase(Spisok& name) {
 }
 
 void searchInSpisok(Date when) {
+    string data;
+    cout << "Введите дату(DD.MM.YYYY) для поиска на 7 дней вперёд: ";
+    cin >> data;
+    when.day = stoi(data.substr(0, 2));
+    when.month = stoi(data.substr(3, 5));
+    when.year = stoi(data.substr(6, 10));
     int c = 0;
     string buf = "";
     tm date{};
@@ -129,6 +135,12 @@ void searchInSpisok(Date when) {
 }
 
 void sortByMonth(Date when) {
+    string data;
+    cout << "Введите дату(DD.MM.YYYY) для сортировки по месяцу: ";
+    cin >> data;
+    when.day = stoi(data.substr(0, 2));
+    when.month = stoi(data.substr(3, 5));
+    when.year = stoi(data.substr(6, 10));
     vector <Spisok> to_do_listBuf;
     bool flag = 0;
     while (flag == 0) {
